@@ -1,6 +1,5 @@
 import React from "react";
 import TodoList from "./components/TodoList";
-import AddTodo from "./components/AddTodo";
 import Navbar from "./components/Navbar";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";

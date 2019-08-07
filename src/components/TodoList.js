@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
+import { fetchTodosHandler } from "../actions";
 
 class TodoList extends Component {
+  componentDidMount() {
+    const { fetchTodos } = this.props;
+    fetchTodos("https://jsonplaceholder.typicode.com/todos");
+  }
+
   render() {
     const { todos } = this.props.todoList;
     return (
@@ -34,4 +40,12 @@ const mapStateToProps = ({ todoList }) => {
     todoList: todoList
   };
 };
-export default connect(mapStateToProps)(TodoList);
+
+const mapDispatchToProps = {
+  fetchTodos: fetchTodosHandler
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);

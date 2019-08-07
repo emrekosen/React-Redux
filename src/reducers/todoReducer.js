@@ -1,7 +1,7 @@
-import { ADD_TODO, DELETE_TODO, FINISH_TODO } from "../constants";
+import { ADD_TODO, DELETE_TODO, FINISH_TODO, FETCH_TODOS } from "../constants";
 
 const initialState = {
-  todos: [{ id: "3123asd", content: "hello world", isDone: false }]
+  todos: []
 };
 
 export default function todoListReducer(state = initialState, action) {
@@ -13,6 +13,9 @@ export default function todoListReducer(state = initialState, action) {
       return action.payload || false;
 
     case DELETE_TODO:
+      return action.payload || false;
+
+    case FETCH_TODOS:
       return action.payload || false;
 
     default:

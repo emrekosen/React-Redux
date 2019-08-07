@@ -1,4 +1,5 @@
-import { ADD_TODO, DELETE_TODO, FINISH_TODO } from "../constants";
+import { ADD_TODO, DELETE_TODO, FINISH_TODO, FETCH_TODOS } from "../constants";
+import axios from "axios";
 
 export const addTodoHandler = data => (dispatch, getState) => {
   let tempState = { ...getState().todoList };
@@ -28,5 +29,16 @@ export const deleteTodoHandler = id => (dispatch, getState) => {
   dispatch({
     type: DELETE_TODO,
     payload: newState
+  });
+};
+
+export const fetchTodosHandler = url => (dispatch, getState) => {
+  axios.get(url).then(response => {
+    let todos = [];
+    response.data.map(todo =>
+      todos.push({ id: todo.id, content: todo.title, isDone: todo.completed })
+    );
+    let tempState = { ...getState().todoList, todos: todos };
+    dispatch({ type: FETCH_TODOS, payload: tempState });
   });
 };

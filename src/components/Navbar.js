@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <Link class="navbar-brand" to="/">
-        ToDo <span class="sr-only">(current)</span>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        ToDo <span className="sr-only">(current)</span>
       </Link>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNavAltMarkup"
@@ -16,16 +16,16 @@ export default function Navbar() {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon" />
+        <span className="navbar-toggler-icon" />
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <Link class="nav-item nav-link" to="/">
-            Home <span class="sr-only">(current)</span>
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <Link className="nav-item nav-link" to="/">
+            Home <span className="sr-only">(current)</span>
           </Link>
 
-          <Link class="nav-item nav-link" to="/done">
-            Done <span class="sr-only">(current)</span>
+          <Link className="nav-item nav-link" to="/done">
+            Done <span className="sr-only">(current)</span>
           </Link>
         </div>
       </div>
