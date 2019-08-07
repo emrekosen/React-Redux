@@ -1,26 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setTodo } from "../actions";
+import { finishTodoHandler, deleteTodoHandler } from "../actions";
 
 class Todo extends Component {
   render() {
-    const { body, isDone, onClickDelete } = this.props;
+    const { body, id, isDone, onClickHandler, onClickDelete } = this.props;
     return (
-      <div className="list-group-item">
-        <li onClick={onClickDelete}>
-          {isDone ? <strike>{body}</strike> : body}
-        </li>
-      </div>
+      <li
+        className={
+          isDone
+            ? "list-group-item list-group-item-success mt-2 d-flex justify-content-between align-items-center"
+            : "list-group-item mt-2 d-flex justify-content-between align-items-center"
+        }
+        onClick={onClickHandler.bind(this, id)}
+      >
+        {isDone ? <strike>{body}</strike> : body}
+        <i
+          className="fas fa-trash-alt"
+          onClick={onClickDelete.bind(this, id)}
+        />
+      </li>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClickDelete: () => {
-      dispatch(setTodo(ownProps.id));
-    }
-  };
+const mapDispatchToProps = {
+  onClickHandler: finishTodoHandler,
+  onClickDelete: deleteTodoHandler
 };
 
 export default connect(

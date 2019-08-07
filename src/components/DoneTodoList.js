@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Todo from "./Todo";
-import AddTodo from "./AddTodo";
 
-class TodoList extends Component {
+class DoneTodoList extends Component {
   render() {
     const { todos } = this.props.todoList;
     return (
       <div className="container">
-        <AddTodo />
         <ul className="list-group">
           {todos.map(todo => {
-            if (!todo.isDone) {
+            if (todo.isDone) {
               return (
                 <Todo
                   key={todo.id}
@@ -34,4 +32,4 @@ const mapStateToProps = ({ todoList }) => {
     todoList: todoList
   };
 };
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps)(DoneTodoList);

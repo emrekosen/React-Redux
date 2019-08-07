@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addTodo } from "../actions";
+import { addTodoHandler } from "../actions";
 
 var uniqid = require("uniqid");
 
@@ -28,22 +28,37 @@ class AddTodo extends Component {
   //   }
   // };
 
+  onClickAdd = (data, e) => {
+    const { onClickHandler } = this.props;
+    e.preventDefault();
+    if (data.content.length > 0) {
+      onClickHandler(data);
+      this.setState({
+        ...this.state,
+        todo: ""
+      });
+    }
+  };
+
   render() {
-    const { onClickAdd } = this.props;
     return (
       <div>
-        <form className="form">
-          <div className="form-group">
+        <form className="form-inline justify-content-center">
+          <div className="form-group mt-3 mb-2">
             <input
               type="text"
-              className="form-control"
+              className="form-control mr-2"
               name="todo"
               value={this.state.todo}
               onChange={this.changeHandler}
             />
             <button
-              className="btn btn-primary w-100"
-              onClick={onClickAdd.bind(this, this.state.todo)}
+              className="btn btn-primary"
+              onClick={this.onClickAdd.bind(this, {
+                id: uniqid(),
+                content: this.state.todo,
+                isDone: false
+              })}
             >
               Add
             </button>
@@ -54,12 +69,9 @@ class AddTodo extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClickAdd: (text, e) => {
-    e.preventDefault();
-    dispatch(addTodo({ id: uniqid(), content: text, isDone: false }));
-  }
-});
+const mapDispatchToProps = {
+  onClickHandler: addTodoHandler
+};
 
 export default connect(
   null,
