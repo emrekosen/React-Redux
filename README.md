@@ -1,3 +1,12 @@
+#To Do with React-Redux
+
+Used technologies;
+-React
+-Redux
+-Thunk
+-JSONPlaceholder
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
