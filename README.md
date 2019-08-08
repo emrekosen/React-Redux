@@ -1,6 +1,6 @@
 # To Do with React-Redux
 
-Used technologies;
+Used technologies;<br>
 -React<br>
 -Redux<br>
 -Thunk<br>
